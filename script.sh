@@ -25,6 +25,8 @@ asdfLanguagesVersions=(
 
 noConfirm="--noconfirm"
 
+echo "Installing system packages"
+
 for package in ${packages[@]}
 do
   echo "Installing $package"
@@ -32,12 +34,16 @@ do
   yay -S $package $noConfirm
 done
 
+echo "Installing language plugins in asdf"
+
 for language in "${asdfLanguages[@]}"
 do 
   echo "Installing $language"
 
   asdf plugin add $language
 done
+
+echo "Installing language version and set as global"
 
 for languageVersion in "${asdfLanguagesVersions[@]}"
 do
