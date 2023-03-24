@@ -49,7 +49,7 @@ for languageVersion in "${asdfLanguagesVersions[@]}"
 do
   echo "Installing $languageVersion"
 
-  asdf install $languagesVersion
+  asdf install $languageVersion
   asdf global $languageVersion
 done
 
