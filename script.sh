@@ -32,16 +32,17 @@ do
   yay -S $package $noConfirm
 done
 
-for language in ${asdfLanguages[@]} 
+for language in "${asdfLanguages[@]}"
 do 
   echo "Installing $language"
 
   asdf plugin add $language
 done
 
-for languageVersion in ${asdfLanguagesVersions[@]}
+for languageVersion in "${asdfLanguagesVersions[@]}"
 do
   echo "Installing $languageVersion"
 
   asdf install $languagesVersion
+  asdf global $languageVersion
 done
