@@ -15,5 +15,6 @@ packages=(
 
 for package in ${packages[@]}
 do
-  echo $package
+  echo "Installing $package"
+  echo "place holder installation"
 done
