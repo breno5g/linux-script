@@ -52,3 +52,9 @@ do
   asdf install $languagesVersion
   asdf global $languageVersion
 done
+
+echo "Add dotfiles with chezmoi"
+
+chezmoi init git@github.com:breno5g/dotfiles.git
+
+chezmoi update
