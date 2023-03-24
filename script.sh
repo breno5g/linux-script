@@ -13,8 +13,11 @@ packages=(
   yarn
 )
 
+noConfirm="--noconfirm"
+
 for package in ${packages[@]}
 do
   echo "Installing $package"
-  echo "place holder installation"
+  
+  yay -S $package $noConfirm
 done
