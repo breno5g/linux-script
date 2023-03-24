@@ -10,5 +10,10 @@ packages=(
   visual-studio-code-bin
   asdf-vm
   git
+  yarn
 )
 
+for package in ${packages[@]}
+do
+  echo $package
+done
