@@ -11,7 +11,9 @@ packages=(
   asdf-vm
   git
   yarn
+  beekeeper-studio-bin
 )
+
 
 asdfLanguages=(
   nodejs
