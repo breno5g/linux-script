@@ -12,6 +12,7 @@ packages=(
   git
   yarn
   beekeeper-studio-bin
+  telegram-desktop
 )
 
 
