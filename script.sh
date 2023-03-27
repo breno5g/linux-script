@@ -27,18 +27,19 @@ asdfLanguagesVersions=(
 )
 
 noConfirm="--noconfirm"
+zshrcPath="$HOME/.zshrc"
 
 echo "Installing system packages"
 
-for package in ${packages[@]}
+for package in "${packages[@]}"
 do
   echo "Installing $package"
   
-  yay -S $package $noConfirm
+  yay -S "$package" $noConfirm
 done
 
 echo ". /opt/asdf-vm/asdf.sh" >> ~/.zshrc
-source ~/.zshrc
+source "$zshrcPath"
 
 echo "Installing language plugins in asdf"
 
@@ -46,7 +47,7 @@ for language in "${asdfLanguages[@]}"
 do 
   echo "Installing $language"
 
-  asdf plugin add $language
+  asdf plugin add "$language"
 done
 
 echo "Installing language version and set as global"
@@ -55,8 +56,8 @@ for languageVersion in "${asdfLanguagesVersions[@]}"
 do
   echo "Installing $languageVersion"
 
-  asdf install $languageVersion
-  asdf global $languageVersion
+  asdf install "$languageVersion"
+  asdf global "$languageVersion"
 done
 
 echo "Add dotfiles with chezmoi"
