@@ -34,6 +34,9 @@ do
   yay -S $package $noConfirm
 done
 
+echo ". /opt/asdf-vm/asdf.sh" >> ~/.zshrc
+source ~/.zshrc
+
 echo "Installing language plugins in asdf"
 
 for language in "${asdfLanguages[@]}"
