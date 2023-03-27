@@ -27,7 +27,6 @@ asdfLanguagesVersions=(
 )
 
 noConfirm="--noconfirm"
-zshrcPath="$HOME/.zshrc"
 
 echo "Installing system packages"
 
@@ -39,7 +38,8 @@ do
 done
 
 echo ". /opt/asdf-vm/asdf.sh" >> ~/.zshrc
-source "$zshrcPath"
+# shellcheck source=/dev/null
+source "$HOME/.zshrc"
 
 echo "Installing language plugins in asdf"
 
@@ -62,6 +62,6 @@ done
 
 echo "Add dotfiles with chezmoi"
 
-chezmoi init git@github.com:breno5g/dotfiles.git
+chezmoi init https://github.com/breno5g/dotfiles.git
 
 chezmoi update
