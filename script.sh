@@ -28,7 +28,7 @@ asdfLanguagesVersions=(
 noConfirm="--noconfirm"
 
 echo "Installing base devel packages..."
-sudo pacman -S --needed base-devel git
+sudo pacman -S --needed base-devel git $noConfirm
 
 echo "Installing yay"
 
