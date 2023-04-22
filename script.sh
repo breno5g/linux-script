@@ -56,7 +56,7 @@ for language in "${asdfLanguages[@]}"
 do 
   echo "Installing $language"
 
-  asdf "plugin add $language"
+  asdf plugin add $language
 done
 
 echo "Installing language version and set as global"
@@ -65,8 +65,8 @@ for languageVersion in "${asdfLanguagesVersions[@]}"
 do
   echo "Installing $languageVersion"
 
-  asdf "install $languageVersion"
-  asdf "global $languageVersion"
+  asdf install $languageVersion
+  asdf global $languageVersion
 done
 
 echo "Add dotfiles with chezmoi"
