@@ -10,7 +10,6 @@ packages=(
   visual-studio-code-bin
   asdf-vm
   git
-  yarn
   beekeeper-studio-bin
   telegram-desktop
 )
@@ -28,6 +27,16 @@ asdfLanguagesVersions=(
 
 noConfirm="--noconfirm"
 
+echo "Installing base devel packages..."
+sudo pacman -S --needed base-devel git
+
+echo "Installing yay"
+
+cd /tmp || exit
+git clone https://aur.archlinux.org/yay.git
+cd yay || exit
+makepkg -si
+
 echo "Installing system packages"
 
 for package in "${packages[@]}"
@@ -37,7 +46,7 @@ do
   yay -S "$package" $noConfirm
 done
 
-echo ". /opt/asdf-vm/asdf.sh" >> ~/.zshrc
+echo ". /opt/asdf-vm/asdf.sh" >> "$HOME/.zshrc"
 # shellcheck source=/dev/null
 source "$HOME/.zshrc"
 
@@ -47,7 +56,7 @@ for language in "${asdfLanguages[@]}"
 do 
   echo "Installing $language"
 
-  asdf plugin add "$language"
+  asdf "plugin add $language"
 done
 
 echo "Installing language version and set as global"
@@ -56,8 +65,8 @@ for languageVersion in "${asdfLanguagesVersions[@]}"
 do
   echo "Installing $languageVersion"
 
-  asdf install "$languageVersion"
-  asdf global "$languageVersion"
+  asdf "install $languageVersion"
+  asdf "global $languageVersion"
 done
 
 echo "Add dotfiles with chezmoi"
