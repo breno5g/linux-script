@@ -1,76 +1,26 @@
 #!/bin/bash
 
-packages=(
-  flatpak
-  neovim
-  zsh
-  exa
-  bat
-  google-chrome
-  visual-studio-code-bin
-  asdf-vm
-  git
-  beekeeper-studio-bin
-  telegram-desktop
-)
+script_dir=$(realpath "$(dirname "$0")")
 
-
-asdfLanguages=(
-  nodejs
-  chezmoi
-)
-
-asdfLanguagesVersions=(
-  "nodejs 18.15.0"
-  "chezmoi 2.9.5"
-)
-
-noConfirm="--noconfirm"
-
-echo "Installing base devel packages..."
-sudo pacman -S --needed base-devel git $noConfirm
-
-echo "Installing yay"
-
-cd /tmp || exit
-git clone https://aur.archlinux.org/yay.git
-cd yay || exit
-makepkg -si $noConfirm
-
-echo "Installing system packages"
-
-for package in "${packages[@]}"
-do
-  echo "Installing $package"
-  
-  yay -S "$package" $noConfirm
-done
-
-echo ". /opt/asdf-vm/asdf.sh" >> "$HOME/.zshrc"
 # shellcheck source=/dev/null
-source "$HOME/.zshrc"
+source "$script_dir/utils/variables.sh"
+# shellcheck source=/dev/null
+source "$script_dir/utils/functions.sh"
 
-echo "Installing language plugins in asdf"
+# echo "Installing base devel packages..."
+# sudo pacman -S --needed base-devel git "$noConfirm"
 
-for language in "${asdfLanguages[@]}"
-do 
-  echo "Installing $language"
+# echo "Installing yay"
 
-  asdf plugin add $language
-done
+# cd /tmp || exit
+# git clone https://aur.archlinux.org/yay.git
+# cd yay || exit
+# makepkg -si $noConfirm
 
-echo "Installing language version and set as global"
+run installPackages
 
-for languageVersion in "${asdfLanguagesVersions[@]}"
-do
-  echo "Installing $languageVersion"
+run installAsdf
 
-  asdf install $languageVersion
-  asdf global $languageVersion
-done
+run installAsdfLanguages
 
-echo "Add dotfiles with chezmoi"
-
-chezmoi init https://github.com/breno5g/dotfiles.git
-
-chezmoi update
+run addingDotFiles
