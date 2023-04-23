@@ -33,7 +33,6 @@ run() {
 
 installPackages() {
   for package in "${packages[@]}"; do
-    echo "Installing $package"
     yay -S "$package" $noConfirm
   done
 }
@@ -44,7 +43,6 @@ installAsdf() {
   source "$HOME/.zshrc"
 
   for language in "${asdfLanguages[@]}"; do
-    echo "Installing $language"
 
     asdf plugin add $language
   done
@@ -52,7 +50,6 @@ installAsdf() {
 
 installAsdfLanguages() {
   for languageVersion in "${asdfLanguagesVersions[@]}"; do
-    echo "Installing $languageVersion"
 
     asdf install $languageVersion
     asdf global $languageVersion
