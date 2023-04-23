@@ -5,7 +5,10 @@ script_dir=$(realpath "$(dirname "$0")")
 # shellcheck source=/dev/null
 source "$script_dir/utils/variables.sh"
 
-titles[animation_test]="Titulo de teste"
+titles[installPackages]="Installing packages..."
+titles[installAsdf]="Installing ASDF..."
+titles[installAsdfLanguages]="Installing ASDF languages..."
+titles[addingDotFiles]="Adding dot files..."
 
 readonly YELLOW_COLOR="\e[93m"
 
@@ -17,7 +20,7 @@ run() {
   local callback="${*: -1}"
   {
     $1 &>/dev/null
-    echo -ne "\r$([[ $? -eq 0 ]] && echo -ne "${GREEN_COLOR}✔" || echo -ne "${RED_COLOR}✘")${RESET_COLOR} $callback\n"
+    echo -ne "\r$([[ $? -eq 0 ]] && echo -ne "${GREEN_COLOR}✔" || echo -ne "${RED_COLOR}✘")${RESET_COLOR} ${titles[callback]}\n"
   } &
   {
     pid=$!
