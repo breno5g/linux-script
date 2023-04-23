@@ -5,10 +5,12 @@ script_dir=$(realpath "$(dirname "$0")")
 # shellcheck source=/dev/null
 source "$script_dir/utils/variables.sh"
 
-titles[installPackages]="Installing packages..."
-titles[installAsdf]="Installing ASDF..."
-titles[installAsdfLanguages]="Installing ASDF languages..."
-titles[addingDotFiles]="Adding dot files..."
+declare -A titles
+
+titles["installPackages"]="Installing packages..."
+titles["installAsdf"]="Installing ASDF..."
+titles["installAsdfLanguages"]="Installing ASDF languages..."
+titles["addingDotFiles"]="Adding dot files..."
 
 readonly YELLOW_COLOR="\e[93m"
 
@@ -17,10 +19,9 @@ readonly GREEN_COLOR="\e[92m"
 readonly RESET_COLOR="\e[0m"
 
 run() {
-  local callback="${*: -1}"
   {
     $1 &>/dev/null
-    echo -ne "\r$([[ $? -eq 0 ]] && echo -ne "${GREEN_COLOR}✔" || echo -ne "${RED_COLOR}✘")${RESET_COLOR} ${titles[callback]}\n"
+    echo -ne "\r$([[ $? -eq 0 ]] && echo -ne "${GREEN_COLOR}✔" || echo -ne "${RED_COLOR}✘")${RESET_COLOR} ${titles[$1]}\n"
   } &
   {
     pid=$!
@@ -28,7 +29,7 @@ run() {
     i=0
 
     while [ -d /proc/$pid ]; do
-      echo -ne "\r${YELLOW_COLOR}${sprite_sheet:i++%${#sprite_sheet}:1}${RESET_COLOR} ${titles[callback]}"
+      echo -ne "\r${YELLOW_COLOR}${sprite_sheet:i++%${#sprite_sheet}:1}${RESET_COLOR} ${titles[$1]}"
       sleep 0.3
     done
   }
