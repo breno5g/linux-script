@@ -12,12 +12,6 @@ titles["installAsdf"]="Installing ASDF..."
 titles["installAsdfLanguages"]="Installing ASDF languages..."
 titles["addingDotFiles"]="Adding dot files..."
 
-readonly YELLOW_COLOR="\e[93m"
-
-readonly GREEN_COLOR="\e[92m"
-
-readonly RESET_COLOR="\e[0m"
-
 run() {
   {
     $1 &>/dev/null

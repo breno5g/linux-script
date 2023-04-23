@@ -1,5 +1,17 @@
 #!/bin/bash
 
+readonly RED_COLOR="\e[91m"
+export RED_COLOR
+
+readonly YELLOW_COLOR="\e[93m"
+export YELLOW_COLOR
+
+readonly GREEN_COLOR="\e[92m"
+export GREEN_COLOR
+
+readonly RESET_COLOR="\e[0m"
+export RESET_COLOR
+
 packages=(
   flatpak
   neovim
