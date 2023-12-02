@@ -20,6 +20,7 @@ packages=(
   bat
   google-chrome
   visual-studio-code-bin
+  solaar
   asdf-vm
   git
   beekeeper-studio-bin
