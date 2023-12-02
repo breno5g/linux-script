@@ -16,7 +16,7 @@ packages=(
   flatpak
   neovim
   zsh
-  exa
+  eza
   bat
   google-chrome
   visual-studio-code-bin
@@ -26,6 +26,7 @@ packages=(
   git
   beekeeper-studio-bin
   telegram-desktop
+  alacritty
 )
 export packages
 
