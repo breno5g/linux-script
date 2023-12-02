@@ -27,6 +27,7 @@ packages=(
   beekeeper-studio-bin
   telegram-desktop
   alacritty
+  neofetch
 )
 export packages
 
