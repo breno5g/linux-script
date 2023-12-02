@@ -21,6 +21,7 @@ packages=(
   google-chrome
   visual-studio-code-bin
   solaar
+  qbittorrent
   asdf-vm
   git
   beekeeper-studio-bin
@@ -31,12 +32,14 @@ export packages
 asdfLanguages=(
   nodejs
   chezmoi
+  golang
 )
 export asdfLanguages
 
 asdfLanguagesVersions=(
   "nodejs 18.15.0"
   "chezmoi 2.9.5"
+  "golang 1.21.3"
 )
 export asdfLanguagesVersions
 
